@@ -31,6 +31,11 @@ const LoginModal = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const toggle = useCallback(()=>{
+    loginModal.onClose(),
+    registerModal.onOpen()
+  },[loginModal,registerModal])
+
   const {
     register,
     handleSubmit,
@@ -92,19 +97,19 @@ const LoginModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn('github')}
       />
       <div className="mt-4 font-light text-center text-neutral-500">
         <div className="flex flex-row items-center justify-center gap-2">
-          <div>Already have an account?</div>
-          <div className="cursor-pointer text-neutral-800 hover:underline">
-            Log in
+          <div>First time using airbnb?</div>
+          <div onClick={toggle} className="cursor-pointer text-neutral-800 hover:underline">
+            Create an account
           </div>
         </div>
       </div>
