@@ -6,8 +6,8 @@ const formattedCountries = countries.map((country)=> ({
     flag: country.flag,
     latlng: country.latlng,
     region: country.region,
-    capital: country.capital,
-    code: country.cioc,
+    // capital: country.capital,
+    // code: country.cioc,
 }));
 
 const useCountries = () => {    
@@ -15,7 +15,7 @@ const useCountries = () => {
 
     const getByValue = (value: string) => {
         return formattedCountries.find((item)=> item.value === value)
-    }``
+    };
     
     return {
         getAll,

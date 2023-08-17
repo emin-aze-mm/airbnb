@@ -12,8 +12,7 @@ export type CountrySelectValue ={
     latlng: number[];
     region: string;
     value: string;
-    capital:string;
-    code:string;
+    
 }
 
 
