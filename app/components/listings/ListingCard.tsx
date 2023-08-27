@@ -1,10 +1,10 @@
 "use client"
 
-import useCountries from "@/app/hooks/useCountries";
-import { SafeUser, SafeListing } from "@/app/types";
-import { Listing, Reservation } from "@prisma/client";
-import { useRouter } from "next/navigation";
 import React, { useCallback, useMemo } from "react";
+import useCountries from "@/app/hooks/useCountries";
+import { SafeUser, SafeListing, SafeReservation } from "@/app/types";
+import { useRouter } from "next/navigation";
+import { Listing, Reservation } from "@prisma/client";
 
 import {format} from 'date-fns';
 import Image from "next/image";
@@ -12,7 +12,7 @@ import HeartButton from "../HeartButton";
 import Button from "../Button";
 interface ListingProps{
     data:SafeListing;
-    reservation?: Reservation;
+    reservation?: SafeReservation;
     onAction?: (id:string) => void;
     disabled?: boolean;
     actionLabel?: string;
@@ -45,7 +45,7 @@ const ListingCard:React.FC<ListingProps> = ({
                 return;
             }
 
-            onAction?.(actionId);
+         onAction?.(actionId);
     },[onAction , actionId , disabled],);
 
     const price = useMemo(()=>{
@@ -72,9 +72,9 @@ const ListingCard:React.FC<ListingProps> = ({
         <div onClick={()=>router.push(`listings/${data.id}`)} className="col-span-1 cursor-pointer group"
 
         >
-            <div className="flex flex-col gap-2 w-full">
-                <div className="aspect-square w-full relative overflow-hidden rounded-xl">
-                    <Image fill alt="Listing" src={data.imageSrc} className="object-cover h-full w-full group-hover:scale-110 transition"/>
+            <div className="flex flex-col gap-2 w-full ">
+                <div className="aspect-square w-full relative overflow-hidden rounded-xl ">
+                    <Image fill alt="Listing" src={data.imageSrc} className="object-cover  h-full w-full group-hover:scale-110 transition "/>
                     <div className="absolute top-3 right-3">
                         <HeartButton
                             listingId={data.id}
@@ -96,15 +96,17 @@ const ListingCard:React.FC<ListingProps> = ({
                         <div className="font-light">/ night</div>
                     )}
 
-                    {onAction && actionLabel &&(
+                    
+                </div>
+
+                {onAction && actionLabel &&(
                         <Button
                             disabled={disabled}
                             small
                             label={actionLabel}
                             onClick={handleCancel}
                         />
-                    )}
-                </div>
+                )}
 
 
             </div>

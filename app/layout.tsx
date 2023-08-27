@@ -14,6 +14,8 @@ import getCurrentUser from "./actions/getCurrentUser";
 
 const font = Nunito({ subsets: ["latin"] });
 
+
+
 export const metadata: Metadata = {
   title: "Airbnb",
   description: "Airbnb app",

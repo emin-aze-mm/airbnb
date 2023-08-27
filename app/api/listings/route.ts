@@ -40,7 +40,7 @@ Object.keys(body).forEach((value: any) => {
             guestCount,
             locationValue: location.value,
             price: parseInt(price, 10),
-            userId: currentUser.id 
+            userId: currentUser.id
         }
     })
 
