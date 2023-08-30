@@ -74,7 +74,7 @@ const ListingCard:React.FC<ListingProps> = ({
         >
             <div className="flex flex-col gap-2 w-full ">
                 <div className="aspect-square w-full relative overflow-hidden rounded-xl ">
-                    <Image fill alt="Listing" src={data.imageSrc} className="object-cover  h-full w-full group-hover:scale-110 transition "/>
+                    <Image fill alt="Listing" src={data.imageSrc} className="object-cover  h-full w-full group-hover:scale-110 transition " sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
                     <div className="absolute top-3 right-3">
                         <HeartButton
                             listingId={data.id}
